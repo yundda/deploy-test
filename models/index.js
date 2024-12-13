@@ -1,10 +1,11 @@
 "use strict";
 
 const Sequelize = require("sequelize");
-const config = require(__dirname + "/../config/config.json")["development"];
+let config = require(__dirname + "/../config/config.json"); // 변경 가능하도록 const X let 사용
 // config 폴더에서 development(개발 환경)만 남기고 삭제 했기 때문에 이렇게 변경
 // env 사용했을 때는 confing.js로만 변경
-console.log("config", config);
+
+// console.log("config", config);
 // 객체를 가져왔기 때문에 []로 호출
 // { development {
 //       username: 'sesac',
@@ -14,6 +15,13 @@ console.log("config", config);
 //       dialect: 'mysql'
 //   }
 // }
+const env = process.env.NODE_ENV || "development"; // undefined인 경우를 대비해서 or 추가
+// npm run dev ; "development", npm run start ; "production" , undefined
+// >> package.json에서 설정한 이름은 config에서 작성돼있는 이름과 같아야 함!
+console.log("env >> ", env);
+console.log("NODE_ENV >> ", process.env.NODE_ENV);
+config = config[env]; // "development" > env 변수로 변경해줌
+console.log("config", config);
 const db = {};
 
 let sequelize = new Sequelize(
