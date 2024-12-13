@@ -1,7 +1,7 @@
 "use strict";
 
 const Sequelize = require("sequelize");
-let config = require(__dirname + "/../config/config.json"); // 변경 가능하도록 const X let 사용
+let config = require(__dirname + "/../config/config.js"); // 변경 가능하도록 const X let 사용
 // config 폴더에서 development(개발 환경)만 남기고 삭제 했기 때문에 이렇게 변경
 // env 사용했을 때는 confing.js로만 변경
 
